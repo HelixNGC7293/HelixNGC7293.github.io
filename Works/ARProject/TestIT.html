@@ -70,7 +70,7 @@
 
   var scene, camera, renderer, clock, deltaTime, totalTime;
   var smoothedControls, markerRoot, smoothedRoot;
-  var testBoat;
+  var anft;
 
 
   var mesh1;
@@ -82,41 +82,17 @@
   function initialize()
   {
     scene = document.querySelector('a-scene').object3D;
+    renderer = document.querySelector('a-scene').renderer;
+    camera = document.querySelector('a-entity[camera]').components.camera.camera;
+    anft = document.querySelector('a-nft').object3D;
+    markerRoot = new THREE.Group();
+    scene.add(markerRoot);
+
 
     let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
     scene.add( ambientLight );
           
-  // camera = new THREE.Camera();
-  // scene.add(camera);
-
-  // renderer = new THREE.WebGLRenderer({
-  //   antialias : true,
-  //   alpha: true
-  // });
-  // renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-  // renderer.setSize( 640, 480 );
-  // renderer.domElement.style.position = 'absolute'
-  // renderer.domElement.style.top = '0px'
-  // renderer.domElement.style.left = '0px'
-  // document.body.appendChild( renderer.domElement );
-    markerRoot = document.querySelector('a-nft').object3D;
-
-    renderer = document.querySelector('a-scene').renderer;
-    // renderer.setSize( 640, 480 );
-    // renderer.domElement.style.position = 'absolute'
-    // renderer.domElement.style.top = '0px'
-    // renderer.domElement.style.left = '0px'
-    // document.body.appendChild( renderer.domElement );
-    // renderer = new THREE.WebGLRenderer({
-    //   antialias : true,
-    //   alpha: true
-    // });
-    // renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-    // renderer.setSize( 640, 480 );
-    // renderer.domElement.style.position = 'absolute'
-    // renderer.domElement.style.top = '0px'
-    // renderer.domElement.style.left = '0px'
-    // document.body.appendChild( renderer.domElement );
+  
 
     clock = new THREE.Clock();
     deltaTime = 0;
@@ -179,9 +155,18 @@
 
   function update()
   {
-      console.log("a12", smoothedRoot.position);
-      //console.log("b7", smoothedRoot.position);
-    // additional code for smoothed controls
+      var p = new THREE.Vector3();
+      var q = new THREE.Quaternion();
+
+      anft.getWorldPosition(p);
+      anft.getWorldQuaternion(q);
+      markerRoot.position = p;
+      markerRoot.rotation = q;
+      console.log("a1", markerRoot.position);
+      console.log("b1", smoothedRoot.position);
+      console.log("c1", p);
+
+
     smoothedControls.update(markerRoot);
   }
 
