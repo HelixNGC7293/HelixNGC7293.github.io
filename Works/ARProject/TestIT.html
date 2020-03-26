@@ -50,10 +50,10 @@
       smoothThreshold="2"
       size="0.5"
     >
-    <a-entity
+      <a-entity
         gltf-model="models/mega_scene/scene.gltf"
         scale="5 5 5"
-        position="-143 -97 -743"
+        position="0 0 0"
         >
       </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
@@ -160,8 +160,9 @@
 
       anft.getWorldPosition(p);
       anft.getWorldQuaternion(q);
-      markerRoot.position = p;
-      markerRoot.rotation = q;
+      markerRoot.position.set(p);
+      markerRoot.rotation.set(q);
+      markerRoot.visible = anft.visible;
       console.log("a1", markerRoot.position);
       console.log("b1", smoothedRoot.position);
       console.log("c1", p);
