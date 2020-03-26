@@ -1,6 +1,7 @@
 <!-- import aframe and then ar.js with image tracking / location based features -->
 <script src="js/aframe-master.min.js"></script>
 <script src="js/aframe-ar-nft.js"></script>
+<script src="js/threex-arsmoothedcontrols.js"></script>
 
 <!-- style for the loader -->
 <style>
@@ -60,4 +61,106 @@
     <a-entity camera></a-entity>
   </a-scene>
 
+
+  <script>
+
+  var scene, camera, renderer, clock, deltaTime, totalTime;
+  var smoothedControls, markerRoot;
+
+
+  var mesh1;
+
+  initialize();
+  animate();
+
+  function initialize()
+  {
+    scene = document.querySelector('a-scene').object3D;
+
+    let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
+    scene.add( ambientLight );
+          
+    camera = document.querySelector('a-entity[camera]').components.camera.camera;
+    //scene.add(camera);
+    markerRoot = document.querySelector('a-nft').object3D;
+
+    renderer = document.querySelector('a-scene').renderer;
+    // renderer = new THREE.WebGLRenderer({
+    //   antialias : true,
+    //   alpha: true
+    // });
+    // renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+    // renderer.setSize( 640, 480 );
+    // renderer.domElement.style.position = 'absolute'
+    // renderer.domElement.style.top = '0px'
+    // renderer.domElement.style.left = '0px'
+    // document.body.appendChild( renderer.domElement );
+
+    clock = new THREE.Clock();
+    deltaTime = 0;
+    totalTime = 0;
+    
+
+    function onResize()
+    {
+    }
+
+    
+    // handle resize event
+    window.addEventListener('resize', function(){
+      onResize()
+    });
+    
+
+    // interpolates from last position to create smoother transitions when moving.
+    // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
+    let smoothedRoot = new THREE.Group();
+    scene.add(smoothedRoot);
+    smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
+      lerpPosition: 0.8,
+      lerpQuaternion: 0.8,
+      lerpScale: 1,
+      // minVisibleDelay: 1,
+      // minUnvisibleDelay: 1,
+    });
+
+    let geometry1 = new THREE.CubeGeometry(1,1,1);
+    let material1 = new THREE.MeshNormalMaterial({
+      transparent : true,
+      opacity: 0.5,
+      side: THREE.DoubleSide
+    }); 
+    
+    mesh1 = new THREE.Mesh( geometry1, material1 );
+    mesh1.position.y = 0.5;
+    
+    // markerRoot1.add( mesh1 );
+    smoothedRoot.add( mesh1 );
+  }
+
+
+  function update()
+  {
+      
+    // additional code for smoothed controls
+    smoothedControls.update(markerRoot);
+  }
+
+
+  function render()
+  {
+    renderer.render( scene, camera );
+  }
+
+
+  function animate()
+  {
+    requestAnimationFrame(animate);
+    deltaTime = clock.getDelta();
+    totalTime += deltaTime;
+    update();
+    render();
+  }
+
+  </script>
 </body>
