@@ -68,7 +68,7 @@
         >
       </a-entity>
     <!-- static camera that moves according to the device movemenents -->
-    <a-entity camera></a-entity>
+    <!--<a-entity camera></a-entity> -->
   </a-scene>
 
 
@@ -92,7 +92,19 @@
     let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
     scene.add( ambientLight );
           
-    camera = document.querySelector('a-entity[camera]').components.camera.camera;
+  camera = new THREE.Camera();
+  scene.add(camera);
+
+  renderer = new THREE.WebGLRenderer({
+    antialias : true,
+    alpha: true
+  });
+  renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+  renderer.setSize( 640, 480 );
+  renderer.domElement.style.position = 'absolute'
+  renderer.domElement.style.top = '0px'
+  renderer.domElement.style.left = '0px'
+  document.body.appendChild( renderer.domElement );
     //scene.add(camera);
     //markerRoot = document.querySelector('#nftentity').object3D;
     markerRoot = document.querySelector('a-nft').object3D;
@@ -181,8 +193,8 @@
       //console.log("b7", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
-    testBoat.position = smoothedRoot.position;
-    testBoat.rotation = smoothedRoot.rotation;
+    testBoat.position = markerRoot.position;
+    testBoat.rotation = markerRoot.rotation;
   }
 
 
