@@ -126,7 +126,7 @@
     
     mesh1 = new THREE.Mesh( geometry1, material1 );
     mesh1.position.y = 0.5;
-    mesh1.scale = new THREE.Vector3(1, 1, 1);
+    mesh1.scale = new THREE.Vector3(30, 30, 30);
     
     // markerRoot1.add( mesh1 );
     smoothedRoot.add( mesh1 );
@@ -158,11 +158,11 @@
       //markerRoot.position.set(p.x, p.y, p.z);
       //markerRoot.rotation.set(q.x, q.y, q.z);
       //markerRoot.visible = anft.visible;
-      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, 100);
+      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, -markerRoot.position.z);
       //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a6", markerRoot.position);
+      console.log("a10", markerRoot.position);
       console.log("b5", smoothedRoot.position);
   }
 
