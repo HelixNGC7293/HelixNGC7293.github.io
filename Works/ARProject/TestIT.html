@@ -56,11 +56,17 @@
       </a-entity> -->
     </a-nft>
     <a-entity
-            gltf-model="models/mega_scene/scene.gltf"
-        scale="0.1 0.1 0.1"
-        position="-200 -60 -600"
+        gltf-model="models/mega_scene/scene.gltf"
+        scale="1 1 1"
+        position="-143 -97 -743"
         >
-        </a-entity>
+      </a-entity>
+    <a-entity id="boat"
+        gltf-model="models/mega_scene/scene.gltf"
+        scale="1 1 1"
+        position="-143 -97 -743"
+        >
+      </a-entity>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
   </a-scene>
@@ -70,6 +76,7 @@
 
   var scene, camera, renderer, clock, deltaTime, totalTime;
   var smoothedControls, markerRoot, smoothedRoot;
+  var testBoat;
 
 
   var mesh1;
@@ -89,6 +96,7 @@
     //scene.add(camera);
     //markerRoot = document.querySelector('#nftentity').object3D;
     markerRoot = document.querySelector('a-nft').object3D;
+    testBoat = document.querySelector('#boat').object3D;
 
     renderer = document.querySelector('a-scene').renderer;
     // renderer.setSize( 640, 480 );
@@ -152,9 +160,9 @@
     testRoot = new THREE.Group();
     scene.add(testRoot);
     mesh2 = new THREE.Mesh( geometry1, material1 );
-    testRoot.add( mesh2 );
     testRoot.position = THREE.Vector3(-193,  -50, -600);
     testRoot.scale = new THREE.Vector3(1, 1, 1);
+    testRoot.add( mesh2 );
     // mesh3 = new THREE.Mesh( geometry1, material1 );
     // mesh3.position = THREE.Vector3(-50, 0, 0);
     // mesh3.scale = new THREE.Vector3(0.1, 0.1, 0.1);
@@ -173,6 +181,8 @@
       //console.log("b7", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
+    testBoat.position = smoothedRoot.position;
+    testBoat.rotation = smoothedRoot.rotation;
   }
 
 
