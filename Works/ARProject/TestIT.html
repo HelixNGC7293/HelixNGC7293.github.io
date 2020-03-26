@@ -67,6 +67,7 @@
 
 
   var mesh1;
+  var mesh2,mesh3;
 
   initialize();
   animate();
@@ -136,13 +137,28 @@
     
     // markerRoot1.add( mesh1 );
     smoothedRoot.add( mesh1 );
+
+    testRoot = new THREE.Group();
+    scene.add(testRoot);
+    mesh2 = new THREE.Mesh( geometry1, material1 );
+    mesh2.position = THREE.Vector3(0, 0, 0);
+    mesh2.scale = new THREE.Vector3(1, 1, 1);
+    testRoot.add( mesh2 );
+    mesh3 = new THREE.Mesh( geometry1, material1 );
+    mesh3.position = THREE.Vector3(10, 0, 0);
+    mesh3.scale = new THREE.Vector3(1, 1, 1);
+    testRoot.add( mesh3 );
+    mesh3.position = THREE.Vector3(25, 0, 0);
+    testRoot.add( mesh3 );
+    mesh3.position = THREE.Vector3(50, 0, 0);
+    testRoot.add( mesh3 );
   }
 
 
   function update()
   {
-      console.log("a3", markerRoot.position);
-      console.log("b3", smoothedRoot.position);
+      console.log("a4", markerRoot.position);
+      console.log("b4", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
   }
