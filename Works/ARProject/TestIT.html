@@ -51,9 +51,9 @@
       size="0.5"
     >
       <a-entity
-        gltf-model="models/Flamingo.glb"
+        gltf-model="models/trex/scene.gltf"
         scale="1 1 1"
-        position="0 0 0"
+        position="50 0 0"
         >
       </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
@@ -86,9 +86,9 @@
     scene = document.querySelector('a-scene').object3D;
     renderer = document.querySelector('a-scene').renderer;
     camera = document.querySelector('a-entity[camera]').components.camera.camera;
-    anft = document.querySelector('a-nft').object3D;
-    markerRoot = new THREE.Group();
-    scene.add(markerRoot);
+    markerRoot = document.querySelector('a-nft').object3D;
+    //markerRoot = new THREE.Group();
+    //scene.add(markerRoot);
 
 
     let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
@@ -157,19 +157,20 @@
 
   function update()
   {
-      var p = new THREE.Vector3();
-      var q = new THREE.Quaternion();
+      //var p = new THREE.Vector3();
+      //var q = new THREE.Quaternion();
 
-      anft.getWorldPosition(p);
-      anft.getWorldQuaternion(q);
-      markerRoot.position.set(p.x, p.y, p.z);
-      markerRoot.rotation.set(q.x, q.y, q.z);
-      markerRoot.visible = anft.visible;
-      smoothedControls.update(markerRoot);
+      //anft.getWorldPosition(p);
+      //anft.getWorldQuaternion(q);
+      //markerRoot.position.set(p.x, p.y, p.z);
+      //markerRoot.rotation.set(q.x, q.y, q.z);
+      //markerRoot.visible = anft.visible;
+      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, markerRoot.position.z);
+      smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
+      //smoothedControls.update(markerRoot);
 
-      console.log("a2", markerRoot.position);
+      console.log("a3", markerRoot.position);
       console.log("b2", smoothedRoot.position);
-      console.log("c1", p);
   }
 
 
