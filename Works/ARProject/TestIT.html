@@ -51,14 +51,16 @@
       size="0.5"
     >
       <a-entity
-        gltf-model="models/mega_scene/scene.gltf"
-        scale="5 5 5"
+        gltf-model="models/Flamingo.glb"
+        scale="1 1 1"
         position="0 0 0"
         >
       </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
        <!-- <a-entity id="nftentity" 
-                position="0 0 0"> 
+              gltf-model="models/mega_scene/scene.gltf"
+        scale="5 5 5"
+        position="0 0 0"
       </a-entity> -->
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
@@ -158,17 +160,16 @@
       var p = new THREE.Vector3();
       var q = new THREE.Quaternion();
 
-      anft.getWorldPosition(p);
+      anft.getWorldQuaternion(p);
       anft.getWorldQuaternion(q);
-      markerRoot.position.set(p);
-      markerRoot.rotation.set(q);
+      markerRoot.position.set(p.x, p.y, p.z);
+      markerRoot.rotation.set(q.x, q.y, q.z);
       markerRoot.visible = anft.visible;
+      smoothedControls.update(markerRoot);
+
       console.log("a1", markerRoot.position);
       console.log("b1", smoothedRoot.position);
       console.log("c1", p);
-
-
-    smoothedControls.update(markerRoot);
   }
 
 
