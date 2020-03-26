@@ -792,7 +792,7 @@ function load(msg) {
     };
 
     var onError = function (error) {
-        console.error(error);
+    console.log('Error');
     };
     console.log(msg.param);
     // we cannot pass the entire ARController, so we re-create one inside the Worker, starting from camera_param
