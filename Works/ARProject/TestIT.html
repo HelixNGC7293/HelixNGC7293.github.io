@@ -76,7 +76,7 @@
 
 
   var mesh1;
-  var mesh2,mesh3;
+  //var mesh2,mesh3;
 
   initialize();
   animate();
@@ -158,12 +158,12 @@
       //markerRoot.position.set(p.x, p.y, p.z);
       //markerRoot.rotation.set(q.x, q.y, q.z);
       //markerRoot.visible = anft.visible;
-      //smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, markerRoot.position.z);
+      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, -100);
       //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a3", markerRoot.position);
-      console.log("b2", smoothedRoot.position);
+      console.log("a5", markerRoot.position);
+      console.log("b5", smoothedRoot.position);
   }
 
 
@@ -178,8 +178,8 @@
     requestAnimationFrame(animate);
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
-    //mesh2.rotation.x += 0.005;
-    //mesh2.rotation.y += 0.01;
+    mesh1.rotation.x += 0.005;
+    mesh1.rotation.y += 0.01;
     update();
     render();
   }
