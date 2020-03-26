@@ -48,7 +48,7 @@
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="2"
-      size="0.5"
+      size="10"
     >
       <a-entity
         gltf-model="models/trex/scene.gltf"
@@ -158,11 +158,11 @@
       //markerRoot.position.set(p.x, p.y, p.z);
       //markerRoot.rotation.set(q.x, q.y, q.z);
       //markerRoot.visible = anft.visible;
-      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, -100);
+      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, 100);
       //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a5", markerRoot.position);
+      console.log("a6", markerRoot.position);
       console.log("b5", smoothedRoot.position);
   }
 
