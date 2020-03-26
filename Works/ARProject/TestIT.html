@@ -45,15 +45,15 @@
       type="nft"
       url="https://helixngc7293.github.io/Works/ARProject/data/Traffic light-Normal"
       smooth="true"
-      smoothCount="20"
-      smoothTolerance=".02"
-      smoothThreshold="3"
+      smoothCount="50"
+      smoothTolerance=".11"
+      smoothThreshold="10"
     >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <a-entity
             gltf-model="models/mega_scene/scene.gltf"
-        scale="5 5 5"
-        position="1 1 0"
+        scale="2 2 2"
+        position="0 0 0"
         >
         </a-entity>
     </a-nft>
@@ -133,6 +133,7 @@
     
     mesh1 = new THREE.Mesh( geometry1, material1 );
     mesh1.position.y = 0.5;
+    mesh1.scale = new THREE.Vector3(10, 10, 10)
     
     // markerRoot1.add( mesh1 );
     smoothedRoot.add( mesh1 );
@@ -141,7 +142,7 @@
 
   function update()
   {
-      console.log("ArSmoothedControl123", smoothedControls);
+      console.log("ArSmoothedControl234", smoothedControls);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
   }
