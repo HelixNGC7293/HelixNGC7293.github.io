@@ -52,7 +52,7 @@
     >
     <a-entity
         gltf-model="models/mega_scene/scene.gltf"
-        scale="1 1 1"
+        scale="5 5 5"
         position="-143 -97 -743"
         >
       </a-entity>
@@ -62,7 +62,7 @@
       </a-entity> -->
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
-    <!--<a-entity camera></a-entity> -->
+    <a-entity camera></a-entity>
   </a-scene>
 
 
@@ -86,21 +86,19 @@
     let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
     scene.add( ambientLight );
           
-  camera = new THREE.Camera();
-  scene.add(camera);
+  // camera = new THREE.Camera();
+  // scene.add(camera);
 
-  renderer = new THREE.WebGLRenderer({
-    antialias : true,
-    alpha: true
-  });
-  renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-  renderer.setSize( 640, 480 );
-  renderer.domElement.style.position = 'absolute'
-  renderer.domElement.style.top = '0px'
-  renderer.domElement.style.left = '0px'
-  document.body.appendChild( renderer.domElement );
-    //scene.add(camera);
-    //markerRoot = document.querySelector('#nftentity').object3D;
+  // renderer = new THREE.WebGLRenderer({
+  //   antialias : true,
+  //   alpha: true
+  // });
+  // renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+  // renderer.setSize( 640, 480 );
+  // renderer.domElement.style.position = 'absolute'
+  // renderer.domElement.style.top = '0px'
+  // renderer.domElement.style.left = '0px'
+  // document.body.appendChild( renderer.domElement );
     markerRoot = document.querySelector('a-nft').object3D;
 
     renderer = document.querySelector('a-scene').renderer;
@@ -162,12 +160,12 @@
     // markerRoot1.add( mesh1 );
     smoothedRoot.add( mesh1 );
 
-    testRoot = new THREE.Group();
-    scene.add(testRoot);
-    mesh2 = new THREE.Mesh( geometry1, material1 );
-    testRoot.position = THREE.Vector3(193,  50, 600);
-    testRoot.scale = new THREE.Vector3(1, 1, 1);
-    testRoot.add( mesh2 );
+    // testRoot = new THREE.Group();
+    // scene.add(testRoot);
+    // mesh2 = new THREE.Mesh( geometry1, material1 );
+    // testRoot.position = THREE.Vector3(193,  50, 600);
+    // testRoot.scale = new THREE.Vector3(1, 1, 1);
+    // testRoot.add( mesh2 );
     // mesh3 = new THREE.Mesh( geometry1, material1 );
     // mesh3.position = THREE.Vector3(-50, 0, 0);
     // mesh3.scale = new THREE.Vector3(0.1, 0.1, 0.1);
@@ -181,7 +179,7 @@
 
   function update()
   {
-      console.log("a11", markerRoot.position);
+      console.log("a12", smoothedRoot.getAttribute('position'));
       //console.log("b7", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
@@ -199,8 +197,8 @@
     requestAnimationFrame(animate);
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
-    mesh2.rotation.x += 0.005;
-    mesh2.rotation.y += 0.01;
+    //mesh2.rotation.x += 0.005;
+    //mesh2.rotation.y += 0.01;
     update();
     render();
   }
