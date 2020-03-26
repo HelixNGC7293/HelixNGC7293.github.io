@@ -65,7 +65,7 @@
   <script>
 
   var scene, camera, renderer, clock, deltaTime, totalTime;
-  var smoothedControls, markerRoot;
+  var smoothedControls, markerRoot, smoothedRoot;
 
 
   var mesh1;
@@ -115,7 +115,7 @@
 
     // interpolates from last position to create smoother transitions when moving.
     // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
-    let smoothedRoot = new THREE.Group();
+    smoothedRoot = new THREE.Group();
     scene.add(smoothedRoot);
     smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
       lerpPosition: 0.8,
