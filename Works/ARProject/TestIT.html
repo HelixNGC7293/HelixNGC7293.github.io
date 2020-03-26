@@ -52,7 +52,9 @@
     >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       <a-entity id="nftentity" 
-                position="0 0 0"> 
+                position="0 0 0" 
+                gltf-model="models/mega_scene/scene.gltf"
+                scale="1 1 1"> 
       </a-entity>
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
@@ -80,7 +82,8 @@
           
     camera = document.querySelector('a-entity[camera]').components.camera.camera;
     //scene.add(camera);
-    markerRoot = document.querySelector('#nftentity').object3D;
+    //markerRoot = document.querySelector('#nftentity').object3D;
+    markerRoot = document.querySelector('a-nft').object3D;
 
     renderer = document.querySelector('a-scene').renderer;
     // renderer = new THREE.WebGLRenderer({
@@ -140,7 +143,8 @@
 
   function update()
   {
-      console.log("a1", markerRoot.position);
+      console.log("a2", markerRoot.position);
+      console.log("b2", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
   }
