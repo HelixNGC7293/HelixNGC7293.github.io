@@ -4,6 +4,8 @@
 	<title>Hello, AR Cube!</title>
 	<!-- include three.js library -->
 	<script src='js/three.js'></script>
+	<script src='js/GLTFLoader.js'></script>
+	<script src='js/ar-nft.js'></script>
 	<!-- include jsartookit -->
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
@@ -111,9 +113,14 @@ function initialize()
 	scene.add(markerRoot1);
 	
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type : 'pattern',
-		patternUrl : "data/hiro.patt",
-	})
+            type : 'nft',
+            descriptorsUrl : 'data/dataNFT/Traffic light-Normal',
+            changeMatrixMode: 'cameraTransformMatrix'
+        })
+	// let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+	// 	type : 'pattern',
+	// 	patternUrl : "data/hiro.patt",
+	// })
 
 	// interpolates from last position to create smoother transitions when moving.
 	// parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
