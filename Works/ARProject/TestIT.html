@@ -85,6 +85,11 @@
     markerRoot = document.querySelector('a-nft').object3D;
 
     renderer = document.querySelector('a-scene').renderer;
+    renderer.setSize( 640, 480 );
+    renderer.domElement.style.position = 'absolute'
+    renderer.domElement.style.top = '0px'
+    renderer.domElement.style.left = '0px'
+    document.body.appendChild( renderer.domElement );
     // renderer = new THREE.WebGLRenderer({
     //   antialias : true,
     //   alpha: true
@@ -157,7 +162,7 @@
 
   function update()
   {
-      console.log("a5", markerRoot.position);
+      console.log("a6", markerRoot.position);
       console.log("b5", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
@@ -175,6 +180,8 @@
     requestAnimationFrame(animate);
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
+  mesh2.rotation.x += 0.005;
+  mesh2.rotation.y += 0.01;
     update();
     render();
   }
