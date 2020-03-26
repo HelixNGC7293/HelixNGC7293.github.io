@@ -48,7 +48,7 @@
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="2"
-      size="0.01"
+      size="0.0001"
     >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       <a-entity id="nftentity" 
@@ -85,11 +85,11 @@
     markerRoot = document.querySelector('a-nft').object3D;
 
     renderer = document.querySelector('a-scene').renderer;
-    renderer.setSize( 640, 480 );
-    renderer.domElement.style.position = 'absolute'
-    renderer.domElement.style.top = '0px'
-    renderer.domElement.style.left = '0px'
-    document.body.appendChild( renderer.domElement );
+    // renderer.setSize( 640, 480 );
+    // renderer.domElement.style.position = 'absolute'
+    // renderer.domElement.style.top = '0px'
+    // renderer.domElement.style.left = '0px'
+    // document.body.appendChild( renderer.domElement );
     // renderer = new THREE.WebGLRenderer({
     //   antialias : true,
     //   alpha: true
@@ -147,23 +147,23 @@
     scene.add(testRoot);
     mesh2 = new THREE.Mesh( geometry1, material1 );
     mesh2.position = THREE.Vector3(-10, 0, 0);
-    mesh2.scale = new THREE.Vector3(0.1, 0.1, 0.1);
+    mesh2.scale = new THREE.Vector3(0.01, 0.01, 0.01);
     testRoot.add( mesh2 );
-    mesh3 = new THREE.Mesh( geometry1, material1 );
-    mesh3.position = THREE.Vector3(-50, 0, 0);
-    mesh3.scale = new THREE.Vector3(0.1, 0.1, 0.1);
-    testRoot.add( mesh3 );
-    mesh3.position = THREE.Vector3(-25, 0, 0);
-    testRoot.add( mesh3 );
-    mesh3.position = THREE.Vector3(-100, 0, 0);
-    testRoot.add( mesh3 );
+    // mesh3 = new THREE.Mesh( geometry1, material1 );
+    // mesh3.position = THREE.Vector3(-50, 0, 0);
+    // mesh3.scale = new THREE.Vector3(0.1, 0.1, 0.1);
+    // testRoot.add( mesh3 );
+    // mesh3.position = THREE.Vector3(-25, 0, 0);
+    // testRoot.add( mesh3 );
+    // mesh3.position = THREE.Vector3(-100, 0, 0);
+    // testRoot.add( mesh3 );
   }
 
 
   function update()
   {
-      console.log("a6", markerRoot.position);
-      console.log("b5", smoothedRoot.position);
+      console.log("a7", markerRoot.position);
+      //console.log("b7", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
   }
