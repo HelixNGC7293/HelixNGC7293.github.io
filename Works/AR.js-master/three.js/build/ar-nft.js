@@ -749,7 +749,8 @@ var markerResult = null;
 
 function load(msg) {
     var camUrl, nftMarkerUrl;
-    var basePath = self.origin;
+    //var basePath = self.origin;
+    var basePath = "https://helixngc7293.github.io/Works/AR.js-master/";
     console.log('base path:', basePath);
     // test if the msg.param (the incoming url) is an http or https path
     var regexC = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/igm
