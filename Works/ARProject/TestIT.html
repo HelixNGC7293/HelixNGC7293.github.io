@@ -53,7 +53,7 @@
       <a-entity
         gltf-model="models/trex/scene.gltf"
         scale="1 1 1"
-        position="100 100 0"
+        position="135 50 0"
         >
       </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
@@ -115,14 +115,7 @@
     // interpolates from last position to create smoother transitions when moving.
     // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
     smoothedRoot = new THREE.Group();
-    scene.add(smoothedRoot);
-    // smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
-    //   lerpPosition: 0.8,
-    //   lerpQuaternion: 0.8,
-    //   lerpScale: 1,
-    //   // minVisibleDelay: 1,
-    //   // minUnvisibleDelay: 1,
-    // });
+    markerRoot.add(smoothedRoot);
 
     let geometry1 = new THREE.CubeGeometry(1,1,1);
     let material1 = new THREE.MeshNormalMaterial({
@@ -165,12 +158,12 @@
       //markerRoot.position.set(p.x, p.y, p.z);
       //markerRoot.rotation.set(q.x, q.y, q.z);
       //markerRoot.visible = anft.visible;
-      smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, markerRoot.position.z);
-      smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
+      //smoothedRoot.position.set(markerRoot.position.x, markerRoot.position.y, markerRoot.position.z);
+      //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a4", markerRoot.position);
-      console.log("b3", smoothedRoot.position);
+      console.log("a3", markerRoot.position);
+      console.log("b2", smoothedRoot.position);
   }
 
 
