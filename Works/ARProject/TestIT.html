@@ -55,6 +55,12 @@
                 position="0 0 0"> 
       </a-entity> -->
     </a-nft>
+    <a-entity
+            gltf-model="models/mega_scene/scene.gltf"
+        scale="5 5 5"
+        position="1 1 0"
+        >
+        </a-entity>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
   </a-scene>
@@ -146,7 +152,7 @@
     testRoot = new THREE.Group();
     scene.add(testRoot);
     mesh2 = new THREE.Mesh( geometry1, material1 );
-    mesh2.position = THREE.Vector3(0, 0, -50);
+    mesh2.position = THREE.Vector3(-193,  -50, -600);
     mesh2.scale = new THREE.Vector3(0.01, 0.01, 0.01);
     testRoot.add( mesh2 );
     // mesh3 = new THREE.Mesh( geometry1, material1 );
@@ -162,8 +168,8 @@
 
   function update()
   {
-      console.log("a8", markerRoot.position);
-      console.log("l8", markerRoot.visible);
+      console.log("a9", markerRoot.position);
+      console.log("l9", smoothedRoot.visible);
       //console.log("b7", smoothedRoot.position);
     // additional code for smoothed controls
     smoothedControls.update(markerRoot);
@@ -181,8 +187,8 @@
     requestAnimationFrame(animate);
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
-  mesh2.rotation.x += 0.005;
-  mesh2.rotation.y += 0.01;
+    mesh2.rotation.x += 0.005;
+    mesh2.rotation.y += 0.01;
     update();
     render();
   }
