@@ -2,7 +2,6 @@
 <script src="js/aframe-master.min.js"></script>
 <script src="js/aframe-ar-nft.js"></script>
 <script src="js/threex-arsmoothedcontrols.js"></script>
-<script src="js/three.js"></script>
 
 <!-- style for the loader -->
 <style>
@@ -164,7 +163,7 @@
       anft.getWorldQuaternion(p);
       anft.getWorldQuaternion(q);
       markerRoot.position.set(p.x, p.y, p.z);
-      markerRoot.rotation.set(q.x, q.y, q.z);
+      //markerRoot.rotation.set(q.x, q.y, q.z);
       markerRoot.visible = anft.visible;
       smoothedControls.update(markerRoot);
 
