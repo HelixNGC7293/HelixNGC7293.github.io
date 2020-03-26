@@ -53,7 +53,7 @@
       <a-entity
         gltf-model="models/trex/scene.gltf"
         scale="1 1 1"
-        position="50 0 0"
+        position="100 100 0"
         >
       </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
@@ -116,13 +116,13 @@
     // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
     smoothedRoot = new THREE.Group();
     scene.add(smoothedRoot);
-    smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
-      lerpPosition: 0.8,
-      lerpQuaternion: 0.8,
-      lerpScale: 1,
-      // minVisibleDelay: 1,
-      // minUnvisibleDelay: 1,
-    });
+    // smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
+    //   lerpPosition: 0.8,
+    //   lerpQuaternion: 0.8,
+    //   lerpScale: 1,
+    //   // minVisibleDelay: 1,
+    //   // minUnvisibleDelay: 1,
+    // });
 
     let geometry1 = new THREE.CubeGeometry(1,1,1);
     let material1 = new THREE.MeshNormalMaterial({
@@ -169,8 +169,8 @@
       smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a3", markerRoot.position);
-      console.log("b2", smoothedRoot.position);
+      console.log("a4", markerRoot.position);
+      console.log("b3", smoothedRoot.position);
   }
 
 
