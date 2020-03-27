@@ -115,7 +115,7 @@
     // interpolates from last position to create smoother transitions when moving.
     // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
     smoothedRoot = new THREE.Group();
-    markerRoot.add(scene);
+    scene.add(smoothedRoot);
 
     let geometry1 = new THREE.CubeGeometry(1,1,1);
     let material1 = new THREE.MeshNormalMaterial({
@@ -162,8 +162,8 @@
       //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
       //smoothedControls.update(markerRoot);
 
-      console.log("a12", markerRoot.position);
-      console.log("b11", smoothedRoot.position);
+      console.log("a13", markerRoot.position);
+      console.log("b12", smoothedRoot.position);
       console.log("c1", p);
   }
 
