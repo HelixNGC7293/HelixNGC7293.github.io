@@ -2,7 +2,6 @@
 <script src="js/aframe-master.min.js"></script>
 <script src="js/aframe-ar-nft.js"></script>
 <script src="js/threex-arsmoothedcontrols.js"></script>
-<script src='js/GLTFLoader.js'></script>
 
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <!-- style for the loader -->
@@ -52,6 +51,12 @@
       smoothThreshold="2"
       size="100"
     >
+      <a-entity
+        gltf-model="models/trex/scene.gltf"
+        scale="5 5 5"
+        position="0 0 0"
+        >
+      </a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
        <!-- <a-entity id="nftentity" 
               gltf-model="models/mega_scene/scene.gltf"
@@ -68,7 +73,7 @@
 
   var scene, camera, renderer, clock, deltaTime, totalTime;
   var smoothedControls, markerRoot, smoothedRoot;
-      var mixers = [];
+  var anft;
 
 
   var mesh1;
@@ -134,32 +139,6 @@
     // markerRoot1.add( mesh1 );
     smoothedRoot.add( mesh1 );
 
-
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //    add an object in the scene
-        //////////////////////////////////////////////////////////////////////////////////
-
-        var threeGLTFLoader = new THREE.GLTFLoader();
-        var model;
-
-        threeGLTFLoader.load("models/Flamingo.glb", function (gltf) {
-            model = gltf.scene.children[0];
-            model.name = 'Flamingo';
-
-            var animation = gltf.animations[0];
-            var mixer = new THREE.AnimationMixer(model);
-            mixers.push(mixer);
-            var action = mixer.clipAction(animation);
-            action.play();
-
-            smoothedRoot.matrixAutoUpdate = false;
-            smoothedRoot.add(model);
-
-            model.position.z = 0;
-            model.position.x = 100;
-            model.position.y = 100;
-
     // testRoot = new THREE.Group();
     // scene.add(testRoot);
     // mesh2 = new THREE.Mesh( geometry1, material1 );
@@ -206,11 +185,6 @@
   function animate()
   {
     requestAnimationFrame(animate);
-    if (mixers.length > 0) {
-                    for (var i = 0; i < mixers.length; i++) {
-                        mixers[i].update(clock.getDelta());
-                    }
-                }
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
     //mesh1.rotation.x += 0.005;
