@@ -116,6 +116,13 @@
     // parameter lerp values near 0 are slow, near 1 are fast (instantaneous).
     smoothedRoot = new THREE.Group();
     scene.add(smoothedRoot);
+    smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
+      lerpPosition: 0.8,
+      lerpQuaternion: 0.8,
+      lerpScale: 1,
+      // minVisibleDelay: 1,
+      // minUnvisibleDelay: 1,
+    });
 
     let geometry1 = new THREE.CubeGeometry(1,1,1);
     let material1 = new THREE.MeshNormalMaterial({
@@ -150,21 +157,21 @@
 
   function update()
   {
-      var p = new THREE.Vector3();
+      //var p = new THREE.Vector3();
       //var q = new THREE.Quaternion();
 
-      markerRoot.getWorldPosition(p);
+      //markerRoot.getWorldPosition(p);
       //anft.getWorldQuaternion(q);
       //markerRoot.position.set(p.x, p.y, p.z);
       //markerRoot.rotation.set(q.x, q.y, q.z);
       //markerRoot.visible = anft.visible;
-      smoothedRoot.position.set(p.x, p.y, p.z);
+      //smoothedRoot.position.set(p.x, p.y, p.z);
       //smoothedRoot.rotation.set(markerRoot.rotation.x, markerRoot.rotation.y, markerRoot.rotation.z);
-      //smoothedControls.update(markerRoot);
+      smoothedControls.update(markerRoot);
 
       console.log("a13", markerRoot.position);
       console.log("b12", smoothedRoot.position);
-      console.log("c1", p);
+      //console.log("c1", p);
   }
 
 
@@ -179,8 +186,8 @@
     requestAnimationFrame(animate);
     deltaTime = clock.getDelta();
     totalTime += deltaTime;
-    mesh1.rotation.x += 0.005;
-    mesh1.rotation.y += 0.01;
+    //mesh1.rotation.x += 0.005;
+    //mesh1.rotation.y += 0.01;
     update();
     render();
   }
