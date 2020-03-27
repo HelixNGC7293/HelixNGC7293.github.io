@@ -52,6 +52,7 @@
       smoothThreshold="2"
       size="100"
     >
+    <a-entity></a-entity>
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
        <!-- <a-entity id="nftentity" 
               gltf-model="models/mega_scene/scene.gltf"
@@ -192,7 +193,7 @@
       smoothedControls.update(markerRoot);
 
       //console.log("a13", markerRoot.position);
-      ///console.log("b12", smoothedRoot.position);
+      console.log("b12", smoothedRoot.position, smoothedRoot.visible);
       //console.log("c1", p);
   }
 
