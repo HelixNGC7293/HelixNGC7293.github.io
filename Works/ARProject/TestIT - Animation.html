@@ -44,7 +44,6 @@
     <!-- on 'url' use the path to the Image Descriptors created before. -->
     <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
     <a-nft
-      id="nft1"
       type="nft"
       url="https://helixngc7293.github.io/Works/ARProject/data/Traffic light-Normal"
       smooth="true"
@@ -59,23 +58,6 @@
         scale="5 5 5"
         position="0 0 0"
       </a-entity> -->
-    </a-nft>
-    <a-nft
-      id="nft2"
-      type="nft"
-      url="https://helixngc7293.github.io/Works/ARProject/data/pinball"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="2"
-      size="100"
-    >
-        <a-entity
-            gltf-model="models/mega_scene/scene.gltf"
-        scale="5 5 5"
-        position="50 50 0"
-        >
-        </a-entity>
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
@@ -100,7 +82,7 @@
     scene = document.querySelector('a-scene').object3D;
     renderer = document.querySelector('a-scene').renderer;
     camera = document.querySelector('a-entity[camera]').components.camera.camera;
-    markerRoot = document.querySelector('#nft1').object3D;
+    markerRoot = document.querySelector('a-nft').object3D;
     //markerRoot = new THREE.Group();
     //scene.add(markerRoot);
 
